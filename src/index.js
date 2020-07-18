@@ -15,6 +15,9 @@
  * =============================================================================
  */
 
+ //for codesandbox uncomment line below
+ //import * as handpose from "@tensorflow-models/handpose";
+
 function isMobile() {
   const isAndroid = /Android/i.test(navigator.userAgent);
   const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
