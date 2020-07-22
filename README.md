@@ -6,3 +6,4 @@ working example of using mediapipe handpose in the browser
 `npm install babel-core` \
 `npm start`
 
+citation: https://codesandbox.io/s/mediapipetensorflowjs-handpose-demo-handtracking-k8one?file=/src/index.js
