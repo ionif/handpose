@@ -1,4 +1,5 @@
 # handpose
+Github Pages hosted version [here.](https://ionif.github.io/handpose/) \
 working example of using mediapipe handpose in the browser
 ![demo](https://github.com/ionif/handpose/blob/master/handpose.gif)
 
