@@ -65,13 +65,13 @@ function drawPoint(ctx, y, x, r) {
   ctx.beginPath();
   ctx.arc(x, y, r, 0, 2 * Math.PI);
   ctx.fill();
-  let data = { x: x, y: y, r: r}
-  
+  let data = {"x": x, "y": y, "r": r}
+
   //send finger data if websocket is open
-  if (pc.readyState != RTCPeerConnection.CLOSED){
-    dc.send(JSON.stringify(data));
+  if (socket.readyState != WebSocket.CLOSED){
+    socket.send(data);
+    console.log(data);
   }
-  console.log(JSON.stringify(data));
 }
 
 function drawKeypoints(ctx, keypoints) {
@@ -106,8 +106,7 @@ function drawPath(ctx, points, closePath) {
 }
 
 let model;
-let pc = new RTCPeerConnection();
-let dc = pc.createDataChannel("fingers");
+let socket;
 
 async function setupCamera() {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -153,6 +152,14 @@ const main = async () => {
     info.textContent = e.message;
     info.style.display = "block";
     throw e;
+  }
+
+  //client
+  //send fingers to vr server
+  socket = new WebSocket("wss://eco.websocket.org");
+
+  socket.onopen = function(e) {
+    alert("[open] Connection established");
   }
 
   landmarksRealTime(video);
